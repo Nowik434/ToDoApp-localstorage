@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../../../favicon.ico">
+
+  <title>Checkout example for Bootstrap</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+
+</head>
+
+<body onload="fetchTask()" class="bg-light">
+
+  <div class="container">
+
+    <div class="row justify-content-md-center mt-4">
+      <div class="col-md-8">
+        <h4 class="mb-3">Lista zadań</h4>
+        <form class="needs-validation" novalidate>
+          <div class="input-group mb-3">
+            <input type="text" id="search" class="form-control" placeholder="Zadanie" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <input type="text" id="search-text" class="form-control" placeholder="Opis zadania" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="add-to-list">Dodaj</button>
+            </div>
+          </div>
+
+
+
+          <div id="main-output" class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+              <div class="row">
+                <div class="col-md-10">
+                  <div class=" w-100 justify-content-between">
+                    <h5 class="mb-1 title">
+                      <label class="label">Lorem ipsum dolor sit amet consectetur.</label>
+                      <input type="text">
+                    </h5>
+                    <p class="mb-1 txt-content">
+                      <label class="label-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore hic corrupti nostrum. Ducimus, quidem ab.</label>
+                      <textarea class="text" rows="3"></textarea>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <small>23.07.2018</small>
+                  <button id="del"><i class="fas fa-trash delete btn btn-outline-primary"></i></button>
+                  <button id="edt"><i class="fas fa-pen edit btn btn-outline-primary"></i></button>
+                </div>
+              </div>
+            </a>
+            <hr class="mb-4">
+
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="row">
+                  <div class="col-md-10">
+                    <div class=" w-100 justify-content-between">
+                      <h5 class="mb-1 title">
+                        <label class="label">Lorem ipsum dolor sit.</label>
+                        <input type="text">
+                      </h5>
+                      <p class="mb-1 txt-content">
+                        <label class="label-2">Lorem ipsum dolor sit amet consectetur adipieniet impedit suscipit tempora pariatur velit a voluptatibus, omnis saepe vero itaque. Vitae.</label>
+                        <textarea class="text" rows="3"></textarea>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <small>23.07.2018</small>
+                    <i class="fas fa-trash delete btn btn-outline-primary"></i>
+                    <i class="fas fa-pen edit btn btn-outline-primary"></i>
+                  </div>
+                </div>
+              </a>
+              <hr class="mb-4">
+
+          </div>
+
+
+
+
+          <!-- <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+              <label class="custom-control-label" for="credit">Credit card</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+              <label class="custom-control-label" for="debit">Debit card</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+              <label class="custom-control-label" for="paypal">PayPal</label>
+            </div>
+          </div> -->
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2018 Paweł Nowicki</p>
+
+    </footer>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script>
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+  </script>
+  <script src="js/bootstrap.bundle.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

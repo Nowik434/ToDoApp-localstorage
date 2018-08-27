@@ -1,0 +1,112 @@
+
+body {
+    background: #83a4d4; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #83a4d4, #b6fbff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #83a4d4, #b6fbff); 
+
+}
+
+h4{
+    text-align: center;
+    color: #fff;
+    font-size: 29px;
+}
+
+.btn-outline-secondary{
+    color: #fff;
+    /* border: 2px solid #fff; */
+    border-radius: 0%;
+    padding: 5px;
+    width: 100px;
+    background-color: #0062cc;
+    border-color: #005cbf;
+}
+
+.btn-outline-primary{
+    color: #fff;
+    border: none;
+    border-radius: 0%;
+    padding: 5px;
+    width: 100px;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:active{
+    background-color: transparent;
+    color: #999
+}
+
+.btn-outline-primary:active{
+    background-color: transparent !important;
+    color: #999
+}
+
+.form-control{
+    /* border: 2px solid #fff; */
+    border-radius: 0px;
+}
+
+.form-control:first-child{
+    /* border-right: 5px solid #000; */
+}
+
+.list-group-item{
+    border: 0px;
+    border-radius: 0% !important;
+
+    background: #00c6ff;
+    background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);
+    background: linear-gradient(to right, #0072ff, #00c6ff); 
+}
+
+.mb-4, .my-4 {
+    margin-bottom: -0.5rem !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+small {
+    position: relative;
+    top: -9px;
+    right: -37px;
+}
+
+.fas{
+    font-size: 22px;
+    position: relative;
+    right: -17px;
+    margin-bottom: 7px;
+}
+
+input, textarea {
+    width: 100%;
+    background: #81818266;
+    border: none;
+    padding: 2px;
+    color: #ffe000b5;
+    transition: all 1s ease;
+}
+
+.form-control{
+    background-color: rgba(0, 123, 255, 0.3);
+    border: none;
+}
+
+
+
+
+/* SHOW AND HIDE EDIT MODE */
+
+a h5.title input[type=text], p.txt-content textarea {
+    display: none;
+}
+
+a.editMode h5.title input[type=text], a.editMode textarea{
+    display: block;
+}
+
+a.editMode h5 input[type=text], a.editMode textarea {
+    display: block;
+}
+
+a.editMode h5 label, a.editMode p.txt-content label{
+    display: none;
+}

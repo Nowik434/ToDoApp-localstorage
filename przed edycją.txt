@@ -1,0 +1,543 @@
+const search = document.getElementById('search');
+const searchTxt = document.getElementById('search-text');
+let mainOutput = document.getElementById('main-output');
+const deleteBtn = document.querySelector('.delete');
+let output = '';
+const d = new Date();
+const date = d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
+let localStorageOutput = [];
+
+
+
+
+console.log(mainOutput);
+
+//Add items
+
+document.querySelector('#add-to-list').addEventListener('click', () => {
+    const getInput = search.value;
+    const getInputTxt = searchTxt.value;
+    if (getInput == '' || getInputTxt == '') {
+        console.log('Nic nie wpisa�e�...')
+    } else {
+        
+        
+        let newItem = `
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+              <div class="row">
+                <div class="col-md-10">
+                  <div class=" w-100 justify-content-between">
+                    <h5 class="mb-1 title">
+                      <label class="label">${getInput}</label>
+                      <input type="text">
+                    </h5>
+                    <p class="mb-1 txt-content">
+                      <label class="label-2">${getInputTxt}</label>
+                      <textarea class="text" rows="3"></textarea>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                <small>${date}</small>
+                <i class="fas fa-trash delete btn btn-outline-primary"></i>
+                <i class="fas fa-pen edit btn btn-outline-primary"></i>
+                </div>
+              </div>
+            </a>
+            <hr class="mb-4">
+        `;
+        // localStorageOutput.push(newItem)
+        // mainOutput.insertAdjacentHTML('beforeend', newItem);
+        // mainOutput.insertAdjacentHTML('beforeend', output);
+        // mainOutput = localStorageOutput;
+        search.value = '';
+        searchTxt.value = '';
+        // localStorageOutput.push(newItem);
+        // mainOutput.insertAdjacentHTML('beforeend', localStorageOutput);
+        // window.localStorage.setItem("task1", getInput);
+        // saveLocal();
+        // // add();
+        // function saveLocal() {
+        //     for (let i = 0; i < localStorageOutput.length; i++) {
+        //         localStorage.setItem("task" + i, localStorageOutput[i]);
+        //         // mainOutput.insertAdjacentHTML('beforeend', newItem);
+        //         console.log('blblblbl');
+        //     }
+        // }
+        
+        if (localStorage.getItem('localStorageOutput') === null) {
+            var localStorageOutput = [];
+        
+            localStorageOutput.push(newItem);
+        
+            localStorage.setItem('localStorageOutput', JSON.stringify(localStorageOutput));
+        }
+
+        // function get_todos() {
+        //     var todos = new Array;
+        //     var todos_str = localStorage.getItem('todo');
+        //     if (todos_str !== null) {
+        //         todos = JSON.parse(todos_str); 
+        //     }
+        //     return todos;
+        // }
+
+        // function add() {
+        //     var task = search.value;
+
+        //     var todos = get_todos();
+        //     todos.push(task);
+        //     localStorage.setItem('todo', JSON.stringify(todos));
+
+        //     return false;
+        // }
+
+
+    }
+
+});
+
+
+
+
+
+// getLocal();
+// function getLocal() {
+//     for (let i = 0; i < localStorage.length; i++) {
+//         mainOutput.insertAdjacentHTML('beforeend', localStorage.getItem(localStorage.key(i)));
+//         console.log('111')
+//     }
+// }
+
+
+//Delete items
+
+document.addEventListener('DOMContentLoaded', () => {
+    mainOutput.addEventListener('click', (e) => {
+        const listItem = e.target.parentNode.parentNode.parentNode;
+        const editInput = listItem.querySelector('input[type=text]');
+        const editTextarea = listItem.querySelector('textarea.text');
+        const label = listItem.querySelector(".label");
+        const label_2 = listItem.querySelector(".label-2");
+        const containsClass = listItem.classList.contains("editMode");
+        const editIcon = listItem.querySelector('.edit');
+        console.log(editIcon);
+
+        console.log(editInput, label, containsClass);
+        if (e.target.classList.contains('delete')) {
+            let fff = e.target.closest('.list-group-item');
+            fff.remove();
+            removeLocal();
+            // saveLocal();
+        } else if (containsClass) {
+            label.innerText = editInput.value;
+            label_2.innerText = editTextarea.value;
+            editIcon.classList.remove("fa-check");
+            editIcon.classList.add('fa-pen');
+            // saveLocal();
+        } else {
+            editInput.value = label.innerText;
+            editTextarea.value = label_2.innerText;
+            editIcon.classList.remove("fa-pen");
+            editIcon.classList.add('fa-check');
+            // saveLocal();
+        }
+
+        listItem.classList.toggle("editMode");
+        console.log(listItem.classList);
+
+        // for(let i=0; i<=localStorage; i++){
+        //     let elementID = "element-" +i;
+        //     localStorage.setItem('Title-' + i, editInput.value);
+        // }
+
+        // mainOutput.forEach(localStorage.setItem('Title-', editInput.value));
+
+
+
+    });
+});
+
+// function saveLocal() {
+//     let elementID = "element-" + i;
+//     for (let i = 0; i < mainOutput.length; i++) {
+//         window.localStorage.setItem("task" + i, output);
+//     }
+// }
+
+// function loadList(){
+//     for (var i = 0; i < localStorage.length; i++) {
+//         // var obj = ;
+//         mainOutput.insertAdjacentHTML('beforeend', localStorage.getItem(localStorage.key(i)));
+//     }
+//     // console.log(obj);
+    
+// }
+// loadList();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?????????????????????????????????????????????????????????????????????????????????????????????
+wersja 2
+const search = document.getElementById('search');
+const searchTxt = document.getElementById('search-text');
+let mainOutput = document.getElementById('main-output');
+const deleteBtn = document.querySelector('.delete');
+let output = '';
+const d = new Date();
+const date = d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
+// let localStorageOutput = [];
+
+
+
+
+console.log(mainOutput);
+
+//Add items
+
+document.querySelector('#add-to-list').addEventListener('click', () => {
+    // const getInput = search.value;
+    // const getInputTxt = searchTxt.value;
+    // if (getInput == '' || getInputTxt == '') {
+    //     console.log('Nic nie wpisałeś...')
+    // } else {
+
+
+    //     let newItem = `
+    //     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+    //           <div class="row">
+    //             <div class="col-md-10">
+    //               <div class=" w-100 justify-content-between">
+    //                 <h5 class="mb-1 title">
+    //                   <label class="label">${getInput}</label>
+    //                   <input type="text">
+    //                 </h5>
+    //                 <p class="mb-1 txt-content">
+    //                   <label class="label-2">${getInputTxt}</label>
+    //                   <textarea class="text" rows="3"></textarea>
+    //                 </p>
+    //               </div>
+    //             </div>
+    //             <div class="col-md-2">
+    //             <small>${date}</small>
+    //             <i class="fas fa-trash delete btn btn-outline-primary"></i>
+    //             <i class="fas fa-pen edit btn btn-outline-primary"></i>
+    //             </div>
+    //           </div>
+    //         </a>
+    //         <hr class="mb-4">
+    //     `;
+    // localStorageOutput.push(newItem)
+    // mainOutput.insertAdjacentHTML('beforeend', newItem);
+    // mainOutput.insertAdjacentHTML('beforeend', output);
+    // mainOutput = localStorageOutput;
+    // search.value = '';
+    // searchTxt.value = '';
+    // localStorageOutput.push(newItem);
+    // mainOutput.insertAdjacentHTML('beforeend', localStorageOutput);
+    // window.localStorage.setItem("task1", getInput);
+    // saveLocal();
+    // // add();
+    // function saveLocal() {
+    //     for (let i = 0; i < localStorageOutput.length; i++) {
+    //         localStorage.setItem("task" + i, localStorageOutput[i]);
+    //         // mainOutput.insertAdjacentHTML('beforeend', newItem);
+    //         console.log('blblblbl');
+    //     }
+    // }
+
+
+    //Get form val
+    const getInput = search.value;
+    const getInputTxt = searchTxt.value;
+
+    function saveTask(e) {
+
+
+
+        //Create object
+        var tasks = {
+            name: getInput,
+            description: getInputTxt
+        }
+
+        if (localStorage.getItem('task') === null) {
+            var task = [];
+            task.push(tasks);
+
+            // localStorageOutput.push(newItem);
+
+            localStorage.setItem('task', JSON.stringify(task));
+        } else {
+            var myTask = JSON.parse(localStorage.getItem('task'));
+            myTask.push(tasks);
+
+            localStorage.setItem('task', JSON.stringify(myTask));
+        }
+
+
+        fetchTask();
+
+        search.value = '';
+        searchTxt.value = '';
+    }
+    saveTask();
+
+
+    // fetchTask();
+
+    // function get_todos() {
+    //     var todos = new Array;
+    //     var todos_str = localStorage.getItem('todo');
+    //     if (todos_str !== null) {
+    //         todos = JSON.parse(todos_str); 
+    //     }
+    //     return todos;
+    // }
+
+    // function add() {
+    //     var task = search.value;
+
+    //     var todos = get_todos();
+    //     todos.push(task);
+    //     localStorage.setItem('todo', JSON.stringify(todos));
+
+    //     return false;
+    // }
+
+
+    // }
+
+});
+
+function deleteTask(name) {
+    var task = JSON.parse(localStorage.getItem('task'));
+    for (var i = 0; i < task.length; i++) {
+        if (task[i].name == name) {
+            task.splice(i, 1);
+            const containsClass = conta.classList.contains("editMode");
+
+            if (containsClass) {
+                name = editInput.value;
+                // label_2.innerText = editTextarea.value;
+                // editIcon.classList.remove("fa-check");
+                // editIcon.classList.add('fa-pen');
+                // saveLocal();
+            } else {
+                // editInput.value = label.innerText;
+                // editTextarea.value = label_2.innerText;
+                // editIcon.classList.remove("fa-pen");
+                // editIcon.classList.add('fa-check');
+                // saveLocal();
+            }
+
+        }
+    }
+
+    localStorage.setItem('task', JSON.stringify(task));
+
+    fetchTask();
+}
+
+
+function editTask(name) {
+    var task = JSON.parse(localStorage.getItem('task'));
+    for (var i = 0; i < task.length; i++) {
+        if (task[i].name == name) {
+            task[i].name = 'DUPA';
+        }
+    }
+    localStorage.setItem('task', JSON.stringify(task));
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    mainOutput.addEventListener('click', (e) => {
+        var target = e.target.parentNode.parentNode.parentNode;
+        console.log(target);
+        target.classList.toggle("editMode");
+    });
+
+    fetchTask();
+});
+
+// function editTask(name) {
+//     var task = JSON.parse(localStorage.getItem('task'));
+//     var cont = document.querySelector('.list-group-item');
+//     const listItem = name;
+//     console.log(listItem);
+//         const editInput = document.querySelector('input[type=text]');
+//     //     const editTextarea = listItem.querySelector('textarea.text');
+//     //     const label = listItem.querySelector(".label");
+//     //     const label_2 = listItem.querySelector(".label-2");
+//         const conta = document.querySelector(".list-group-item");
+//         const containsClass = conta.classList.contains("editMode");
+//     //     const editIcon = listItem.querySelector('.edit');
+//     for(var i =0; i < task.length; i++){
+//         if(containsClass){
+//                 name = editInput.value;
+//                 // label_2.innerText = editTextarea.value;
+//                 // editIcon.classList.remove("fa-check");
+//                 // editIcon.classList.add('fa-pen');
+//                 // saveLocal();
+//             } else {
+//                 // editInput.value = label.innerText;
+//                 // editTextarea.value = label_2.innerText;
+//                 // editIcon.classList.remove("fa-pen");
+//                 // editIcon.classList.add('fa-check');
+//                 // saveLocal();
+//             }
+
+//     }
+//     cont.classList.toggle("editMode");
+//     localStorage.setItem('task', JSON.stringify(task));
+
+//     fetchTask();
+// }
+
+
+
+function fetchTask() {
+    var task = JSON.parse(localStorage.getItem('task'));
+
+    console.log(task);
+
+    mainOutput.innerHTML = '';
+    for (let i = 0; i < task.length; i++) {
+        let name = task[i].name;
+        let description = task[i].description;
+
+        mainOutput.innerHTML += `
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+              <div class="row">
+                <div class="col-md-10">
+                  <div class=" w-100 justify-content-between">
+                    <h5 class="mb-1 title">
+                      <label class="label">${name}</label>
+                      <input type="text">
+                    </h5>
+                    <p class="mb-1 txt-content">
+                      <label class="label-2">${description}</label>
+                      <textarea class="text" rows="3"></textarea>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                <small>${date}</small>
+                <i onclick="deleteTask('${name}')" class="fas fa-trash delete btn btn-outline-primary"></i>
+                <i onclick="editTask('${name}')" class="fas fa-pen edit btn btn-outline-primary"></i>
+                </div>
+              </div>
+            </a>
+            <hr class="mb-4">
+        `;
+    }
+}
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     mainOutput.addEventListener('click', (e) => {
+// if (containsClass) {
+//                 label.innerText = editInput.value;
+//                 label_2.innerText = editTextarea.value;
+//                 editIcon.classList.remove("fa-check");
+//                 editIcon.classList.add('fa-pen');
+//                 // saveLocal();
+//             } else {
+//                 editInput.value = label.innerText;
+//                 editTextarea.value = label_2.innerText;
+//                 editIcon.classList.remove("fa-pen");
+//                 editIcon.classList.add('fa-check');
+//                 // saveLocal();
+//             }
+//     });
+// });
+
+// getLocal();
+// function getLocal() {
+//     for (let i = 0; i < localStorage.length; i++) {
+//         mainOutput.insertAdjacentHTML('beforeend', localStorage.getItem(localStorage.key(i)));
+//         console.log('111')
+//     }
+// }
+
+
+//Delete items
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     mainOutput.addEventListener('click', (e) => {
+//         const listItem = e.target.parentNode.parentNode.parentNode;
+//         const editInput = listItem.querySelector('input[type=text]');
+//         const editTextarea = listItem.querySelector('textarea.text');
+//         const label = listItem.querySelector(".label");
+//         const label_2 = listItem.querySelector(".label-2");
+//         const containsClass = listItem.classList.contains("editMode");
+//         const editIcon = listItem.querySelector('.edit');
+//         // console.log(editIcon);
+//         var task = JSON.parse(localStorage.getItem('task'));
+//         // console.log(editInput, label, containsClass);
+//         for(var i =0; i < task.length; i++){
+//        if (containsClass) {
+//         localStorage.setItem('task', JSON.stringify(task));
+//             console.log(i);
+//             task[i] = editInput.value;
+//             task[i] = editTextarea.value;
+//             editIcon.classList.remove("fa-check");
+//             editIcon.classList.add('fa-pen');
+//             // saveLocal();
+//         } else {
+//             editInput.value = task[i];
+//             editTextarea.value = task[i];
+//             editIcon.classList.remove("fa-pen");
+//             editIcon.classList.add('fa-check');
+//             // saveLocal();
+//         }
+
+//         listItem.classList.toggle("editMode");
+//         console.log(listItem.classList);
+//     }
+// // for(let i=0; i<=localStorage; i++){
+// //     let elementID = "element-" +i;
+// //     localStorage.setItem('Title-' + i, editInput.value);
+// // }
+
+// // mainOutput.forEach(localStorage.setItem('Title-', editInput.value));
+
+
+
+//     });
+// });
+
+// function saveLocal() {
+//     let elementID = "element-" + i;
+//     for (let i = 0; i < mainOutput.length; i++) {
+//         window.localStorage.setItem("task" + i, output);
+//     }
+// }
+
+// function loadList(){
+//     for (var i = 0; i < localStorage.length; i++) {
+//         // var obj = ;
+//         mainOutput.insertAdjacentHTML('beforeend', localStorage.getItem(localStorage.key(i)));
+//     }
+//     // console.log(obj);
+
+// }
+// loadList();
